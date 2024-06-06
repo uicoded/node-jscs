@@ -4,6 +4,7 @@ Contribution Guide
 Thanks for wanting to contribute! This document describes some points about the contribution process for the JSCS package.
 
 1. [Maintainers](#maintainers)
+1. [How you can help](#how-you-can-help)
 1. [Pull Requests](#pull-requests)
  - [Before Submitting a PR](#before-submitting-a-pr)
  - [Why did you close my PR or Issue?](#why-did-you-close-my-pull-request-or-issue)
@@ -23,9 +24,25 @@ The maintainers of the project are:
  * Oleg Gaidarenko (@markelog).
  * Mike Sherov (@mikesherov).
  * Joel Kemp (@mrjoelkemp).
+ * Alexej Yaroshevich (@zxqfox).
+ * Henry Zoo (@hzoo).
 
 The project is being developed by the community. Maintainers merge pull-requests and fix critical bugs. All other features
 and patches are welcomed to be implemented by community members.
+
+How You Can Help
+----------------
+
+Many of the community requests/issues relate new rule requests, supporting additional style variations via
+extending the supported options of a rule, bug fixes for existing rules, or strengthening presets by specifying more rules.
+All of those issues are great starting places for beginners to contribute.
+
+If you'd like to work on an issue, just leave a comment on the issue saying that you'll work on a PR.
+
+Also check out the [beginner-friendly](https://github.com/jscs-dev/node-jscs/labels/beginner-friendly) label for an additional set
+of beginner-friendly tickets.
+
+Join us in the [Gitter Chat Room](https://gitter.im/jscs-dev/node-jscs).
 
 Pull-requests
 -------------
@@ -36,9 +53,9 @@ It will be reviewed by a maintainer and accepted, or commented for rework, or de
 ##### Before submitting a PR
 
 1. Please review our suggested [commit message format](#commit-message-format).
-1. Make sure you have tests for your modifications (we use [Mocha](http://visionmedia.github.io/mocha/) and [Assert](http://nodejs.org/api/assert.html))
- - Tests for rules are located in `test/rules`
- - Tests for presets are located in `test/options/preset`
+1. Make sure you have tests for your modifications (we use [Mocha](https://mochajs.org/) and [Assert](http://nodejs.org/api/assert.html))
+ - Tests for rules are located in `test/specs/rules`
+ - Code to validate default presets are located in `test/data/options/preset`
 1. Run `npm test` locally to catch any JSHint and JSCS errors.
 
 ##### Why did you close my pull request or issue?
@@ -70,6 +87,7 @@ When it comes to bugs, the more details you provide, the easier it is to reprodu
 
 Some helpful datapoints to provide (if you can):
 
+1. Specific rules that that have issues
 1. A failing test would be amazing
 1. Code snippets that make jscs exhibit the issue
 1. The version of jscs that you're using
@@ -101,7 +119,8 @@ Implementing Features
 --------
 
 It's likely that you'll have to implement feature requests or enhancements on your own. To do that, you'll need
-to be comfortable with JavaScript, Promises, Node.js, and familiar with [Esprima's abstract syntax tree format](http://esprima.org/demo/parse.html#).
+to be comfortable with JavaScript, Promises, Node.js, and familiar with Javascript abstract syntax trees (specifically Bablyon).
+Check out [AST Explorer](http://astexplorer.net/) with the `babylon6` parser.
 
 To understand how JSCS works, the best place to start is in the `lib/` directory: starting with `lib/cli.js`
 (to see the processing flow when `jscs` is invoked in the terminal) then going to `lib/checker.js` and `lib/string-checker.js`
@@ -120,9 +139,9 @@ If you'd like to add an additional preset, please add the following (maintaining
 
 * The new preset's configuration to `/presets`
 * A file containing sample code, including any necessary license (ideally from that organization/project's codebase) to `/test/data/options/preset/`
-* An integration test by adding the line `testPreset('mynewpreset');` to `/test/options/preset.js`
-* The presets name to the possible values of the preset option in README.md
-* A link to the preset following the existing style in the "Presets" section of README.md
+* An integration test by adding the line `testPreset('mynewpreset');` to `/test/string-checker.js`
+* The presets name to the possible values of the preset option in OVERVIEW.md
+* A link to the preset following the existing style in the "Presets" section of OVERVIEW.md
 
 Setting up your environment
 -------
@@ -130,7 +149,7 @@ Setting up your environment
 1. Fork the node-jscs repository
 1. Clone your fork to your local machine
 1. Run `npm install` in your local fork
-1. Consider setting up the appropriate [JSCS editor package](https://github.com/jscs-dev/node-jscs#friendly-packages)
+1. Consider setting up the appropriate [JSCS package](http://jscs.info/overview#friendly-packages) for your text editor
  - We use JSCS to check the JSCS codebase
 1. Create a new branch for your fix: `git checkout -b my-fix-branch master`
 1. Implement your bug fix or feature request
@@ -163,9 +182,8 @@ Example:
 ```
 validateIndentation: remove array and object indentation validation
 
-Fixes #627
-Closes #545
+Fixes #627 - issue
+Closes gh-545 - pull request
 ```
 
 You can find other examples of this format by [viewing recent commits](https://github.com/jscs-dev/node-jscs/commits/master) made to master.
-

@@ -5,6 +5,11 @@ var opts = nopt({
   version: Boolean
 });
 
+// requireCamelCaseOrUpperCaseIdentifiers
+function test(opt_test) {
+  var var_args = arguments;
+}
+
 // disallowMultipleLineBreaks
 // disallowMultipleVarDecl
 var insight = new Insight({
@@ -27,6 +32,8 @@ var anonymousFunction = function() {};
 // requireSpaceAfterBinaryOperators
 // requireSpacesInConditionalExpression
 if (opts.insight === false) {
+
+  // requireSpaceBetweenArguments
   insight.config.set('optOut', true);
 } else if (opts.insight) {
   insight.config.set('optOut', false);
@@ -49,3 +56,8 @@ var arr = [1, 2, 3];
 var obj = {a: 1, b: 2, c: 3};
 // disallowSpacesInsideParentheses
 console.log('string');
+
+// maximumLineLength
+// should ignore really long comment lines .......................................
+// and regex
+var regex = /somesuperlongregex..................................................../;

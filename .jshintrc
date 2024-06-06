@@ -3,7 +3,9 @@
     "bitwise"  : true,
     "undef"    : true,
     "eqeqeq"   : true,
-    "forin"    : true,
     "noarg"    : true,
-    "mocha"    : true
+    "mocha"    : true,
+    "unused"   : true,
+    "asi"      : true,
+    "esnext"   : true
 }

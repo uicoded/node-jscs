@@ -1,2 +1,2 @@
-require('./helpers/browserification').create();
-require('./helpers/readme').replace();
+require('./helpers/generate-patterns');
+

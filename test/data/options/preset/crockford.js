@@ -33,7 +33,7 @@ function getElementsByClassName(className) {
         var array,                // array of class names
             ncn = node.className; // the node's classname
 
-// validateQuoteMarks
+        // validateQuoteMarks
 
         if (ncn && ncn.split(' ').indexOf(className) >= 0) {
             results.push(node);
@@ -42,12 +42,13 @@ function getElementsByClassName(className) {
     return results;
 }
 
+
 div.onclick = function (e) {
     return false;
 };
 
 obj = {
-    method: function () {
+    method: function () { // requireSpaceBeforeObjectValues
         return this.datum; // requireDotNotation
     },
     datum: 0
@@ -81,6 +82,7 @@ APP = (function () {
         remove: function (key) {
             var at = keys.indexOf(key);
             if (at >= 0) {
+                // requireSpaceBetweenArguments
                 keys.splice(at, 1);
                 values.splice(at, 1);
             }
